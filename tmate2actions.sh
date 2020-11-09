@@ -59,7 +59,7 @@ Run '\`touch ${CONTINUE_FILE}\`' to continue to the next step.
 "
 
 if [[ -n "${DING_DING_BOT_TOKEN}" ]]; then
-    echo -e "${INFO} Sending message to Telegram..."
+    echo -e "${INFO} Sending message to Telegram...${DING_DING_BOT_TOKEN}"
     curl 'https://oapi.dingtalk.com/robot/send?access_token=${DING_DING_BOT_TOKEN}' \
     -H 'Content-Type: application/json' \
     -d '{"msgtype": "text","text": {"content": "${MSG}(ding_ding_keyword:2020)"}}' >${TELEGRAM_LOG}
