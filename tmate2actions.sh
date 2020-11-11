@@ -60,9 +60,9 @@ Run '\`touch ${CONTINUE_FILE}\`' to continue to the next step.
 
 if [[ -n "${DING_DING_BOT_TOKEN}" ]]; then
     echo -e "${INFO} Sending message to Telegram...${DING_DING_BOT_TOKEN}"
-    curl 'https://oapi.dingtalk.com/robot/send?access_token=${DING_DING_BOT_TOKEN}' \
+    curl "https://oapi.dingtalk.com/robot/send?access_token=${DING_DING_BOT_TOKEN}" \
     -H 'Content-Type: application/json' \
-    -d '{"msgtype": "text","text": {"content": "${MSG}(ding_ding_keyword:2020)"}}' >${TELEGRAM_LOG}
+    -d "{\"msgtype\": \"text\",\"text\": {\"content\": \"${MSG}(ding_ding_keyword:2020)\"}}" >${TELEGRAM_LOG}
     TELEGRAM_STATUS=$(cat ${TELEGRAM_LOG} | jq -r .ok)
     if [[ ${TELEGRAM_STATUS} != true ]]; then
         echo -e "${ERROR} Telegram message sending failed: $(cat ${TELEGRAM_LOG})"
